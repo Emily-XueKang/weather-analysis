@@ -23,12 +23,14 @@ public class HottestMapper extends Mapper<LongWritable, Text, Text, FloatWritabl
         while(itr.hasMoreTokens()){
             oneRecord.add(itr.nextToken());
         }
-        long time;
+        //float time;
+        //time = Long.valueOf(oneRecord.get(0));
+        String time;
         String Geohash;
         float temperature;
-        time = Long.valueOf(oneRecord.get(0));
+        time = oneRecord.get(0);
         Geohash = oneRecord.get(1); //Geohash
         temperature = Float.valueOf(oneRecord.get(40)); //temperature_surface
-        context.write(new Text(Geohash), new FloatWritable(temperature));
+        context.write(new Text(time + " : " + Geohash), new FloatWritable(temperature));
     }
 }

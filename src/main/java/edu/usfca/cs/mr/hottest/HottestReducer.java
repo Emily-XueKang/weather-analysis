@@ -13,11 +13,13 @@ public class HottestReducer extends Reducer<Text, FloatWritable, Text, FloatWrit
     @Override
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
         float high = 0;
+        String highgeotime = "";
         for(FloatWritable val:values){
             if(val.get()>high){
                 high = val.get();
-                context.write(new Text(key),new FloatWritable(high));
+                highgeotime = key.toString();
             }
         }
+        context.write(new Text(highgeotime),new FloatWritable(high));
     }
 }
