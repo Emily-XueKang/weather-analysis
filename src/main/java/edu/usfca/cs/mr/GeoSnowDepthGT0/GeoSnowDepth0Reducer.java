@@ -12,7 +12,7 @@ public class GeoSnowDepth0Reducer extends Reducer<Text, FloatWritable, Text, Flo
     @Override
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
         for(FloatWritable val:values){
-            if(val.get()>0.0){
+            if(val.get()>2.0){
                 context.write(new Text(key),new FloatWritable(val.get()));
             }
         }
