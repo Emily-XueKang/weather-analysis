@@ -9,6 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by xuekang on 10/29/17.
@@ -30,7 +31,7 @@ public class HottestTemperatureJob {
             job.setReducerClass(HottestTemperatureReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
-            job.setMapOutputValueClass(FloatWritable.class);
+            job.setMapOutputValueClass(ArrayList.class);
             // Outputs from Reducer. It is sufficient to set only the following
             // two properties if the Mapper and Reducer has same key and value
             // types. It is set separately for elaboration.
