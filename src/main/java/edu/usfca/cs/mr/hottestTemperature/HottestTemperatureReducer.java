@@ -36,11 +36,6 @@ public class HottestTemperatureReducer extends Reducer<Text, FloatWritable, Text
         //FloatWritable high= new FloatWritable(0);
         float high = 0;
         String highgeotime = "";
-//        for(float temp:temperatrueMap.values()){
-//            if(temp>high){
-//                high = temp;
-//            }
-//        }
         for(String geotime:temperatrueMap.keySet()){
             if(temperatrueMap.get(geotime)>high) {
                 high = temperatrueMap.get(geotime);
