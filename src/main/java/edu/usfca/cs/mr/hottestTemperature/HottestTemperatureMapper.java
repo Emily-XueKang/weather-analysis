@@ -1,4 +1,4 @@
-package edu.usfca.cs.mr.hottest;
+package edu.usfca.cs.mr.hottestTemperature;
 
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 /**
  * Created by xuekang on 10/29/17.
  */
-public class HottestMapper extends Mapper<LongWritable, Text, Text, FloatWritable> {
+public class HottestTemperatureMapper extends Mapper<LongWritable, Text, Text, FloatWritable> {
     //timestamp--double, geohash--text, temperature--float
     @Override
     protected void map(LongWritable key, Text value, Context context)

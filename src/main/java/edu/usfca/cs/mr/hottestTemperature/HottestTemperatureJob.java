@@ -1,4 +1,4 @@
-package edu.usfca.cs.mr.hottest;
+package edu.usfca.cs.mr.hottestTemperature;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -13,21 +13,21 @@ import java.io.IOException;
 /**
  * Created by xuekang on 10/29/17.
  */
-public class HottestJob {
+public class HottestTemperatureJob {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
-            Job job = Job.getInstance(conf, "hottest time place job");
+            Job job = Job.getInstance(conf, "hottestTemperature time place job");
             // Current class.
-            job.setJarByClass(HottestJob.class);
+            job.setJarByClass(HottestTemperatureJob.class);
             // Mapper
-            job.setMapperClass(HottestMapper.class);
+            job.setMapperClass(HottestTemperatureMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(HottestReducer.class);
+            job.setCombinerClass(HottestTemperatureReducer.class);
             // Reducer
-            job.setReducerClass(HottestReducer.class);
+            job.setReducerClass(HottestTemperatureReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(FloatWritable.class);
