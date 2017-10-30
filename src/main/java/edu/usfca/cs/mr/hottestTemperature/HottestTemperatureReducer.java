@@ -6,24 +6,47 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by xuekang on 10/29/17.
  */
-public class HottestTemperatureReducer extends Reducer<Text, ArrayList<String>, Text, Text> {
+public class HottestTemperatureReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
+    private Map<String, Float> temperatrueMap = new HashMap<>();
     @Override
-    protected void reduce(Text key, Iterable<ArrayList<String>> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
+//        float high = 0;
+//        String highgeotime = "";
+//        for(FloatWritable val:values){
+//            if(val.get()>high){
+//                high = val.get();
+//            }
+//        }
+        //context.write(new Text(key),new FloatWritable(high));
+        //temperatrueMap.put(new Text(key),new FloatWritable(high));
+        float temperature = 0;
+        for(FloatWritable val:values){
+            temperature = val.get();
+        }
+        temperatrueMap.put(key.toString(),temperature);
+    }
+    @Override
+    protected void cleanup(Context context) throws IOException,InterruptedException{
+        //FloatWritable high= new FloatWritable(0);
         float high = 0;
         String highgeotime = "";
-        for(ArrayList<String> val:values){
-            String temperaturestring = val.get(2);
-            float temperature = Float.valueOf(temperaturestring);
-
-            if(temperature>high){
-                high = temperature;
-                highgeotime = val.get(0)+" : "+val.get(1);
+//        for(float temp:temperatrueMap.values()){
+//            if(temp>high){
+//                high = temp;
+//            }
+//        }
+        for(String geotime:temperatrueMap.keySet()){
+            if(temperatrueMap.get(geotime)>high) {
+                high = temperatrueMap.get(geotime);
+                highgeotime = geotime;
             }
         }
-        context.write(new Text("high"),new Text(highgeotime + " has "+high));
+        context.write(new Text(highgeotime), new FloatWritable(high));
     }
 }

@@ -31,7 +31,7 @@ public class HottestTemperatureJob {
             job.setReducerClass(HottestTemperatureReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
-            job.setMapOutputValueClass(ArrayList.class);
+            job.setMapOutputValueClass(FloatWritable.class);
             // Outputs from Reducer. It is sufficient to set only the following
             // two properties if the Mapper and Reducer has same key and value
             // types. It is set separately for elaboration.
