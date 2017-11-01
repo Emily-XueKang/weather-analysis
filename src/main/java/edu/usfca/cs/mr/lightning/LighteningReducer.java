@@ -30,7 +30,7 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
         Map<Text, FloatWritable> sortedMap = sortByValue(geoMap);
         int counter = 0;
         for (Text key: sortedMap.keySet()) {
-            if (counter++ == 20) break;
+            if (counter++ == 3) break;
             context.write(key, sortedMap.get(key));
         }
     }

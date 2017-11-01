@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
 public class LighteningMapper extends Mapper<LongWritable, Text, Text, FloatWritable>  {
 
     @Override
-    protected void map(LongWritable key, Text value, Mapper.Context context)
+    protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
         StringTokenizer itr;
         itr = new StringTokenizer(value.toString());
@@ -27,7 +27,7 @@ public class LighteningMapper extends Mapper<LongWritable, Text, Text, FloatWrit
 
         String geo = oneRecord.get(1).substring(0, 4);
         float lightening = Float.valueOf(oneRecord.get(22)); //lightening_surface
-        if (lightening != 0) {
+        if (lightening != 0.0) {
             context.write(new Text(geo), new FloatWritable(lightening));
         }
     }
