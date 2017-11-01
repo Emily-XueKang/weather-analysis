@@ -34,7 +34,7 @@ import java.util.StringTokenizer;
 //        context.write(tg, new FloatWritable(temperature));
 //    }
 //}
-public class HottestTemperatureMapper extends Mapper<LongWritable, Text, Text, FloatWritable> {
+public class HottestTemperatureMapper extends Mapper<LongWritable, Text, Text, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
@@ -48,8 +48,7 @@ public class HottestTemperatureMapper extends Mapper<LongWritable, Text, Text, F
         float temperature;
         String time = oneRecord.get(0);
         String geo = oneRecord.get(1);
-
         temperature = Float.valueOf(oneRecord.get(40)); //temperature_surface
-        context.write(new Text(time+":"+geo), new FloatWritable(temperature));
+        context.write(new Text("highestTemperature"), new Text(time+":"+geo+"-"+temperature));
     }
 }
