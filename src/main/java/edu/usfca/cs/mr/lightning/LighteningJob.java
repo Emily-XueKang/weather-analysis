@@ -1,4 +1,5 @@
 package edu.usfca.cs.mr.lightning;
+import edu.usfca.cs.mr.wordcount.WordCountReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
@@ -26,6 +27,8 @@ public class LighteningJob {
             job.setJarByClass(LighteningJob.class);
             // Mapper
             job.setMapperClass(LighteningMapper.class);
+            job.setCombinerClass(LighteningReducer.class);
+
             // Reducer
             job.setReducerClass(LighteningReducer.class);
             // Outputs from the Mapper.
