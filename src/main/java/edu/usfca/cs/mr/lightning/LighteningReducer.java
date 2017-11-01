@@ -52,7 +52,7 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
             @Override
             public int compare(Map.Entry<String, Float> o1,
                                Map.Entry<String, Float> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
+                return (o2.getValue()).compareTo(o1.getValue());
             }
         });
         // 3. Loop the sorted list and put it into a new insertion order Map LinkedHashMap
