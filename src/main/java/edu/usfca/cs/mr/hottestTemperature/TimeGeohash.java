@@ -32,7 +32,7 @@ public class TimeGeohash implements WritableComparable {
 
     @Override
     public String toString() {
-        return timestamp + " " + geohash;
+        return timestamp + " : " + geohash;
     }
 
     @Override
