@@ -1,5 +1,6 @@
 package edu.usfca.cs.mr.lightning;
 
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -12,7 +13,7 @@ import java.util.StringTokenizer;
 /**
  * Created by xuekang on 10/31/17.
  */
-public class LighteningMapper extends Mapper<LongWritable, Text, Text, IntWritable>  {
+public class LighteningMapper extends Mapper<LongWritable, Text, Text, FloatWritable>  {
 
     @Override
     protected void map(LongWritable key, Text value, Mapper.Context context)
@@ -25,9 +26,9 @@ public class LighteningMapper extends Mapper<LongWritable, Text, Text, IntWritab
         }
 
         String geo = oneRecord.get(1).substring(0, 4);
-        int lightening = Integer.valueOf(oneRecord.get(22)); //lightening_surface
+        float lightening = Float.valueOf(oneRecord.get(22)); //lightening_surface
         if (lightening != 0) {
-            context.write(new Text(geo), new IntWritable(lightening));
+            context.write(new Text(geo), new FloatWritable(lightening));
         }
     }
 }
