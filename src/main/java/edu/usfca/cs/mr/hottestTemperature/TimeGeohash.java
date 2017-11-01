@@ -36,6 +36,11 @@ public class TimeGeohash implements WritableComparable {
     }
 
     @Override
+    public int hashCode(){
+        return timestamp.hashCode()*163 + geohash.hashCode();
+    }
+
+    @Override
     public boolean equals(Object o)
     {
         if(o instanceof TimeGeohash)
