@@ -46,7 +46,7 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
         Collections.sort(list, new Comparator<Map.Entry<Text, FloatWritable>>() {
             public int compare(Map.Entry<Text, FloatWritable> o1,
                                Map.Entry<Text, FloatWritable> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
+                return (o2.getValue()).compareTo(o1.getValue());
             }
         });
 
