@@ -1,5 +1,8 @@
 # Project 2 - Spatiotemporal Analysis with MapReduce
 
+How many records are in the dataset
+323759744
+
 This repository includes starter files and a sample directory structure. You are welcome to use it or come up with your own project structure.
 
 Project Specification: https://www.cs.usfca.edu/~mmalensek/courses/cs686/projects/project-2.html
