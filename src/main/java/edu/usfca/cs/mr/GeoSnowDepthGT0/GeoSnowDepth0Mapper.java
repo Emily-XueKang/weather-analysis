@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 /**
  * Created by xuekang on 10/27/17.
  */
-public class GeoSnowDepth0Mapper extends Mapper<LongWritable, Text, Text, FloatWritable> {
+public class GeoSnowDepth0Mapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
     @Override
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
@@ -21,15 +21,15 @@ public class GeoSnowDepth0Mapper extends Mapper<LongWritable, Text, Text, FloatW
             oneRecord.add(itr.nextToken());
         }
         String Geohash;
-        float snowDepth;
+        double snowDepth;
         Geohash = oneRecord.get(1); //Geohash
-        snowDepth = Float.valueOf(oneRecord.get(50)); //snow_depth_surface
+        snowDepth = Double.valueOf(oneRecord.get(50)); //snow_depth_surface
 //        if(snowDepth>0.0){
 //            context.write(new Text(Geohash), new BooleanWritable(true));
 //        }
 //        else{
 //            context.write(new Text(Geohash), new BooleanWritable(false));
 //        }
-        context.write(new Text(Geohash), new FloatWritable(snowDepth));
+        context.write(new Text(Geohash), new DoubleWritable(snowDepth));
     }
 }
