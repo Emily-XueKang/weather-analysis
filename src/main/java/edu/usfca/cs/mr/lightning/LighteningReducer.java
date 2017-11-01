@@ -7,13 +7,14 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by xuekang on 10/31/17.
  */
 public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
-    Map<Text, FloatWritable> geoMap = new HashMap<Text, FloatWritable>();
 
+    Map<Text, FloatWritable> geoMap = new ConcurrentHashMap<Text, FloatWritable>();
     @Override
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context)
             throws IOException, InterruptedException {
@@ -23,15 +24,17 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
             count += val.get();
         }
         geoMap.put(key, new FloatWritable(count));
+        System.out.println("====put map key==="+key);
+        //context.write(key, new FloatWritable(count));
     }
 
     @Override
     protected void cleanup(Context context) throws IOException, InterruptedException {
         Map<Text, FloatWritable> sortedMap = sortByValue(geoMap);
         int counter = 0;
+        System.out.println("====map size==="+sortedMap.size());
         for (Text key: sortedMap.keySet()) {
-            if (counter++ == 3) break;
-            System.out.println("====adding top3 result===");
+            if(counter++ == 3) break;
             context.write(key, sortedMap.get(key));
         }
     }
@@ -42,9 +45,18 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
         List<Map.Entry<Text, FloatWritable>> list =
                 new LinkedList<Map.Entry<Text, FloatWritable>>(unsortMap.entrySet());
 
+        /*
+        List<Map.Entry<Text, FloatWritable>> list =
+                new LinkedList<Map.Entry<Text, FloatWritable>>();
+        for (Map.Entry<Text, FloatWritable> entry: unsortMap.entrySet()) {
+            list.add(entry);
+            System.out.println("====list entrykey==="+entry.getKey());
+        }
+        */
         // 2. Sort list with Collections.sort(), provide a custom Comparator
         //    Try switch the o1 o2 position for a different order
         Collections.sort(list, new Comparator<Map.Entry<Text, FloatWritable>>() {
+            @Override
             public int compare(Map.Entry<Text, FloatWritable> o1,
                                Map.Entry<Text, FloatWritable> o2) {
                 return (o1.getValue()).compareTo(o2.getValue());
@@ -54,8 +66,10 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
         // 3. Loop the sorted list and put it into a new insertion order Map LinkedHashMap
         Map<Text, FloatWritable> sortedMap = new LinkedHashMap<Text, FloatWritable>();
         for (Map.Entry<Text, FloatWritable> entry : list) {
+            System.out.println("====list entrykey2==="+entry.getKey());
             sortedMap.put(entry.getKey(), entry.getValue());
         }
+        System.out.println("====sorted map size==="+sortedMap.size());
         return sortedMap;
     }
 }
