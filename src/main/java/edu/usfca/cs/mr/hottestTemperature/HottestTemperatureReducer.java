@@ -16,15 +16,7 @@ public class HottestTemperatureReducer extends Reducer<Text, FloatWritable, Text
     private Map<String, Float> temperatrueMap = new HashMap<>();
     @Override
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
-//        float high = 0;
-//        String highgeotime = "";
-//        for(FloatWritable val:values){
-//            if(val.get()>high){
-//                high = val.get();
-//            }
-//        }
-        //context.write(new Text(key),new FloatWritable(high));
-        //temperatrueMap.put(new Text(key),new FloatWritable(high));
+
         float temperature = 0;
         for(FloatWritable val:values){
             temperature = val.get();

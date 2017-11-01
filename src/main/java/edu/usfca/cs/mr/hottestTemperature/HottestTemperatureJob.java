@@ -7,7 +7,10 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.LazyOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class HottestTemperatureJob {
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
             Job job = Job.getInstance(conf, "hottestTemperature time place job");
+            LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
             // Current class.
             job.setJarByClass(HottestTemperatureJob.class);
             // Mapper
@@ -30,7 +34,7 @@ public class HottestTemperatureJob {
             // Reducer
             job.setReducerClass(HottestTemperatureReducer.class);
             // Outputs from the Mapper.
-            job.setMapOutputKeyClass(Text.class);
+            job.setMapOutputKeyClass(TimeGeohash.class);
             job.setMapOutputValueClass(FloatWritable.class);
             // Outputs from Reducer. It is sufficient to set only the following
             // two properties if the Mapper and Reducer has same key and value
@@ -41,6 +45,17 @@ public class HottestTemperatureJob {
             FileInputFormat.addInputPath(job, new Path(args[0]));
             // path to output in HDFS
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
+            //TODO:find the highest temperature among all output files,build another combiner/cleanup
+//            File[] files = new File(args[1]).listFiles();
+//            for (File file : files) {
+//                if (file.isDirectory()) {
+//                    System.out.println("Directory: " + file.getName());
+//                } else {
+//                    System.out.println("File: " + file.getName());
+//                    //read and compare
+//
+//                }
+//            }
             // Block until the job is completed.
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         } catch (IOException e) {

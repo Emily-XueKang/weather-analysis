@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 /**
  * Created by xuekang on 10/29/17.
  */
-public class HottestTemperatureMapper extends Mapper<LongWritable, Text, Text, FloatWritable> {
+public class HottestTemperatureMapper extends Mapper<LongWritable, Text, TimeGeohash, FloatWritable> {
     //timestamp--double, geohash--text, temperature--float
     @Override
     protected void map(LongWritable key, Text value, Context context)
@@ -30,7 +30,8 @@ public class HottestTemperatureMapper extends Mapper<LongWritable, Text, Text, F
         float temperature;
         time = oneRecord.get(0);
         Geohash = oneRecord.get(1); //Geohash
+        TimeGeohash tg = new TimeGeohash(new Text(time), new Text(Geohash));
         temperature = Float.valueOf(oneRecord.get(40)); //temperature_surface
-        context.write(new Text(time+":"+Geohash), new FloatWritable(temperature));
+        context.write(tg, new FloatWritable(temperature));
     }
 }
