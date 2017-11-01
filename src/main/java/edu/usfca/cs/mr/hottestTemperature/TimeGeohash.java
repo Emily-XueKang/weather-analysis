@@ -13,6 +13,11 @@ public class TimeGeohash implements WritableComparable {
     private Text timestamp;
     private Text geohash;
 
+    public TimeGeohash() {
+        timestamp = new Text();
+        geohash = new Text();
+    }
+
     public TimeGeohash(Text ts, Text gh){
         timestamp=ts;
         geohash=gh;

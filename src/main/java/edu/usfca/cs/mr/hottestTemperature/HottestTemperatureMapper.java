@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
  * Created by xuekang on 10/29/17.
  */
 public class HottestTemperatureMapper extends Mapper<LongWritable, Text, TimeGeohash, FloatWritable> {
-    //timestamp--double, geohash--text, temperature--float
     @Override
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
