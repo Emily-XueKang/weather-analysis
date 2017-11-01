@@ -12,10 +12,10 @@ import java.util.Map;
 /**
  * Created by xuekang on 10/29/17.
  */
-public class HottestTemperatureReducer extends Reducer<TimeGeohash, FloatWritable, Text, FloatWritable> {
-    private Map<TimeGeohash, Float> temperatrueMap = new HashMap<>();
+public class HottestTemperatureReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
+    private Map<Text, Float> temperatrueMap = new HashMap<>();
     @Override
-    protected void reduce(TimeGeohash key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
 
         float temperature = 0;
         for(FloatWritable val:values){
@@ -27,7 +27,7 @@ public class HottestTemperatureReducer extends Reducer<TimeGeohash, FloatWritabl
     protected void cleanup(Context context) throws IOException,InterruptedException{
         float high = 0;
         String highgeotime = "";
-        for(TimeGeohash geotime:temperatrueMap.keySet()){
+        for(Text geotime:temperatrueMap.keySet()){
             if(temperatrueMap.get(geotime)>high) {
                 high = temperatrueMap.get(geotime);
                 highgeotime = geotime.toString();
