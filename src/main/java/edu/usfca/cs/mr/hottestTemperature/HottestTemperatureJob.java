@@ -30,7 +30,7 @@ public class HottestTemperatureJob {
             // Mapper
             job.setMapperClass(HottestTemperatureMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(HottestTemperatureReducer.class);
+            //job.setCombinerClass(HottestTemperatureReducer.class);
             // Reducer
             job.setReducerClass(HottestTemperatureReducer.class);
             // Outputs from the Mapper.
