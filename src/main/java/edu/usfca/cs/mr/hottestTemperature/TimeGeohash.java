@@ -23,6 +23,11 @@ public class TimeGeohash implements WritableComparable {
         geohash=gh;
     }
 
+    public void set(Text timestamp, Text geohash) {
+        this.timestamp = timestamp;
+        this.geohash = geohash;
+    }
+
     @Override
     public void readFields(DataInput in) throws IOException {
         timestamp.readFields(in);

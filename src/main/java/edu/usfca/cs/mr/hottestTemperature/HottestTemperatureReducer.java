@@ -25,7 +25,6 @@ public class HottestTemperatureReducer extends Reducer<TimeGeohash, FloatWritabl
     }
     @Override
     protected void cleanup(Context context) throws IOException,InterruptedException{
-        //FloatWritable high= new FloatWritable(0);
         float high = 0;
         String highgeotime = "";
         for(TimeGeohash geotime:temperatrueMap.keySet()){
