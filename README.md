@@ -42,11 +42,6 @@ TimeStamp:1440266400000, Geohash:d5dpds10m55b, Temperature:331.39062
 ANALYSIS:
 
 
-
-
-
-
-
 ## Deliverable II
 
 Responses go here.

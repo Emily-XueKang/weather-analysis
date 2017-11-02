@@ -1,36 +1,34 @@
-package edu.usfca.cs.mr.lightning;
-import edu.usfca.cs.mr.wordcount.WordCountReducer;
+package edu.usfca.cs.mr.bayareaprecipitation;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.LazyOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-
 import java.io.IOException;
 
 /**
- * Created by xuekang on 11/1/17.
+ * Created by xuekang on 11/2/17.
  */
-public class LighteningJob {
+public class BayAreaPrecipitationJob {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
-            Job job = Job.getInstance(conf, "lightening place job");
+            Job job = Job.getInstance(conf, "bay area precipitation job");
             LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
             // Current class.
-            job.setJarByClass(LighteningJob.class);
+            job.setJarByClass(BayAreaPrecipitationJob.class);
             // Mapper
-            job.setMapperClass(LighteningMapper.class);
-            job.setCombinerClass(LighteningReducer.class);
-
+            job.setMapperClass(BayAreaPrecipitationMapper.class);
+            // Combiner. We use the reducer as the combiner in this case.
+            job.setCombinerClass(BayAreaPrecipitationReducer.class);
             // Reducer
-            job.setReducerClass(LighteningReducer.class);
+            job.setReducerClass(BayAreaPrecipitationReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(FloatWritable.class);
