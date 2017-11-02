@@ -19,7 +19,7 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context)
             throws IOException, InterruptedException {
         float count = 0;
-        // calculate the total count per geohash
+        // calculate the total count of lightenings per geohash
         for (FloatWritable val : values) {
             count += val.get();
         }
@@ -64,38 +64,6 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
         }
         return sortedMap;
     }
-    //    private static Map<Text, FloatWritable> sortByValue(Map<Text, FloatWritable> unsortMap) {
-//        // 1. Convert Map to List of Map
-//        List<Map.Entry<Text, FloatWritable>> list =
-//                new LinkedList<Map.Entry<Text, FloatWritable>>(unsortMap.entrySet());
-//
-//        /*
-//        List<Map.Entry<Text, FloatWritable>> list =
-//                new LinkedList<Map.Entry<Text, FloatWritable>>();
-//        for (Map.Entry<Text, FloatWritable> entry: unsortMap.entrySet()) {
-//            list.add(entry);
-//            System.out.println("====list entrykey==="+entry.getKey());
-//        }
-//        */
-//        // 2. Sort list with Collections.sort(), provide a custom Comparator
-//        //    Try switch the o1 o2 position for a different order
-//        Collections.sort(list, new Comparator<Map.Entry<Text, FloatWritable>>() {
-//            @Override
-//            public int compare(Map.Entry<Text, FloatWritable> o1,
-//                               Map.Entry<Text, FloatWritable> o2) {
-//                return (o1.getValue()).compareTo(o2.getValue());
-//            }
-//        });
-//
-//        // 3. Loop the sorted list and put it into a new insertion order Map LinkedHashMap
-//        Map<Text, FloatWritable> sortedMap = new LinkedHashMap<Text, FloatWritable>();
-//        for (Map.Entry<Text, FloatWritable> entry : list) {
-//            System.out.println("====list entrykey2==="+entry.getKey());
-//            sortedMap.put(entry.getKey(), entry.getValue());
-//        }
-//        System.out.println("====sorted map size==="+sortedMap.size());
-//        return sortedMap;
-//    }
 }
 
 

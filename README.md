@@ -11,9 +11,26 @@ The project specification defines several questions that you will answer with Ma
 ## Deliverable I
 
 Responses go here.
-How many records are in the dataset
+
+How many records are in the dataset:
 
 323759744
+
+Top geohashes that have snow depths greater than zero for the entire year:
+
+geohash         average snow depths
+
+f2w7rv7q5hup	7.64520774
+
+c41uhb4r5n00	2.18433252
+
+c41ueb1jyypb	2.184330561
+
+c41uxkww12rz	2.026163066
+
+c44hg15vqhxb	2.024345323
+
+
 
 
 ## Deliverable II
