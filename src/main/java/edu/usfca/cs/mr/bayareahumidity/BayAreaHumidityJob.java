@@ -1,4 +1,4 @@
-package edu.usfca.cs.mr.bayareaprecipitation;
+package edu.usfca.cs.mr.bayareahumidity;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -14,21 +14,21 @@ import java.io.IOException;
 /**
  * Created by xuekang on 11/2/17.
  */
-public class BayAreaPrecipitationJob {
+public class BayAreaHumidityJob {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
-            Job job = Job.getInstance(conf, "bay area precipitation job");
+            Job job = Job.getInstance(conf, "bay area humidity job");
             LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
             // Current class.
-            job.setJarByClass(BayAreaPrecipitationJob.class);
+            job.setJarByClass(BayAreaHumidityJob.class);
             // Mapper
-            job.setMapperClass(BayAreaPrecipitationMapper.class);
+            job.setMapperClass(BayAreaHumidityMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(BayAreaPrecipitationReducer.class);
+            job.setCombinerClass(BayAreaHumidityReducer.class);
             // Reducer
-            job.setReducerClass(BayAreaPrecipitationReducer.class);
+            job.setReducerClass(BayAreaHumidityReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(FloatWritable.class);

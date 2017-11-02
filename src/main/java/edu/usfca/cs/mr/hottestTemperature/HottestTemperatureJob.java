@@ -45,17 +45,6 @@ public class HottestTemperatureJob {
             FileInputFormat.addInputPath(job, new Path(args[0]));
             // path to output in HDFS
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
-            //TODO:find the highest temperature among all output files,build another combiner/cleanup
-//            File[] files = new File(args[1]).listFiles();
-//            for (File file : files) {
-//                if (file.isDirectory()) {
-//                    System.out.println("Directory: " + file.getName());
-//                } else {
-//                    System.out.println("File: " + file.getName());
-//                    //read and compare
-//
-//                }
-//            }
             // Block until the job is completed.
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         } catch (IOException e) {

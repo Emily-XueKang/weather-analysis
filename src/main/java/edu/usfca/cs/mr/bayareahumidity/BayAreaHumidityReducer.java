@@ -1,4 +1,4 @@
-package edu.usfca.cs.mr.bayareaprecipitation;
+package edu.usfca.cs.mr.bayareahumidity;
 
 
 import org.apache.hadoop.io.FloatWritable;
@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by xuekang on 11/2/17.
  */
-public class BayAreaPrecipitationReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
+public class BayAreaHumidityReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
     @Override
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context)
             throws IOException, InterruptedException {
