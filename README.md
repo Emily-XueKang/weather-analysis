@@ -8,27 +8,41 @@ Project Specification: https://www.cs.usfca.edu/~mmalensek/courses/cs686/project
 
 The project specification defines several questions that you will answer with MapReduce jobs. You should edit this document (README.md) with your answers as you find them, including figures, references, etc. This will also serve as a way of tracking your progress through the milestones.
 
+
+
+
 ## Deliverable I
 
 Responses go here.
 
-How many records are in the dataset:
+WARM UP:
 
-323759744
+(1)How many records are in the dataset:
 
-Top geohashes that have snow depths greater than zero for the entire year:
+    323759744
 
-geohash         average snow depths
+(2)Top geohashes that have snow depths greater than zero for the entire year:
 
-f2w7rv7q5hup	7.64520774
+Geohash:        Average snow depths
 
-c41uhb4r5n00	2.18433252
+f2w7rv7q5hup :	7.64520774
 
-c41ueb1jyypb	2.184330561
+c41uhb4r5n00 :	2.18433252
 
-c41uxkww12rz	2.026163066
+c41ueb1jyypb :	2.184330561
 
-c44hg15vqhxb	2.024345323
+c41uxkww12rz :	2.026163066
+
+c44hg15vqhxb :	2.024345323
+
+(3)Highest temperature timestamp and geohash
+
+TimeStamp:1440266400000, Geohash:d5dpds10m55b, Temperature:331.39062
+
+ANALYSIS:
+
+
+
 
 
 
