@@ -12,7 +12,6 @@ public class GeoSnowDepth0Reducer extends Reducer<Text, DoubleWritable, Text, Do
     @Override
     protected void reduce(Text key, Iterable<DoubleWritable> values, Context context) throws IOException, InterruptedException {
         boolean hasZero = false;
-        double average = 0.0;
         double total = 0.0;
         int count = 0;
         for(DoubleWritable val:values) {
@@ -22,9 +21,8 @@ public class GeoSnowDepth0Reducer extends Reducer<Text, DoubleWritable, Text, Do
             total+=val.get();
             count++;
         }
-        average = total/count;
         if(hasZero==false){
-            context.write(new Text(key),new DoubleWritable(average));
+            context.write(new Text(key),new DoubleWritable(total));
         }
     }
 }
