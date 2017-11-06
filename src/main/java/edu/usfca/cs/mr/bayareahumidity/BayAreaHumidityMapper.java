@@ -25,7 +25,7 @@ public class BayAreaHumidityMapper extends Mapper<LongWritable, Text, Text, Floa
         }
         String geohash = oneRecord.get(1);
         float precipitation = Float.valueOf(oneRecord.get(12));
-        if(geohash.startsWith("9qb")||geohash.startsWith("9qc")||geohash.startsWith("9q8")||geohash.startsWith("9q9"));{
+        if(geohash.substring(0,3).equals("9qb")||geohash.substring(0,3).equals("9qc")||geohash.substring(0,3).equals("9q8")||geohash.substring(0,3).equals("9q9")){
             context.write(new Text(geohash),new FloatWritable(precipitation));
         }
     }
