@@ -35,7 +35,8 @@ public class ClimateChartJob {
             job.setReducerClass(ClimateChartReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(IntWritable.class);
-            job.setMapOutputValueClass(ArrayWritable.class);
+            //job.setMapOutputValueClass(ArrayWritable.class);
+            job.setMapOutputValueClass(Text.class);
             // Outputs from Reducer. It is sufficient to set only the following
             // two properties if the Mapper and Reducer has same key and value
             // types. It is set separately for elaboration.
