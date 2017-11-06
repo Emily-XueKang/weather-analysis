@@ -43,6 +43,7 @@ public class ClimateChartReducer extends Reducer<IntWritable, ChartData, IntWrit
             tempCount+=1;
         }
         int monthkey = key.get();
+        System.out.println("monthkey="+monthkey);
         //update global high
         if(htmap.containsKey(monthkey)){
                 if(highTemperature > htmap.get(monthkey)){
