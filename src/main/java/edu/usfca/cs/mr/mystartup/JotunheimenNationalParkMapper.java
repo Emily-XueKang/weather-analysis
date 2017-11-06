@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 /**
  * Created by xuekang on 11/5/17.
  */
+//geohash of yellow stone -- 9xc
 //2.geohash -- u4vy,u4yn,u4vv,u4yj
 //42.snow_cover_surface -- float 100
 //7. visibility_surface -- maximum
