@@ -20,16 +20,10 @@ public class GeoSnowDepth0Mapper extends Mapper<LongWritable, Text, Text, Double
         while(itr.hasMoreTokens()){
             oneRecord.add(itr.nextToken());
         }
-        String Geohash;
+        String geohash;
         double snowDepth;
-        Geohash = oneRecord.get(1); //Geohash
+        geohash = oneRecord.get(1); //Geohash
         snowDepth = Double.valueOf(oneRecord.get(50)); //snow_depth_surface
-//        if(snowDepth>0.0){
-//            context.write(new Text(Geohash), new BooleanWritable(true));
-//        }
-//        else{
-//            context.write(new Text(Geohash), new BooleanWritable(false));
-//        }
-        context.write(new Text(Geohash), new DoubleWritable(snowDepth));
+        context.write(new Text(geohash), new DoubleWritable(snowDepth));
     }
 }
