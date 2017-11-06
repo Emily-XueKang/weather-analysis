@@ -36,12 +36,12 @@ public class ClimateChartJob {
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(IntWritable.class);
             //job.setMapOutputValueClass(ArrayWritable.class);
-            job.setMapOutputValueClass(Text.class);
+            job.setMapOutputValueClass(ChartData.class);
             // Outputs from Reducer. It is sufficient to set only the following
             // two properties if the Mapper and Reducer has same key and value
             // types. It is set separately for elaboration.
             job.setOutputKeyClass(IntWritable.class);
-            job.setOutputValueClass(ArrayWritable.class);
+            job.setOutputValueClass(Text.class);
             // path to input in HDFS
             FileInputFormat.addInputPath(job, new Path(args[0]));
             // path to output in HDFS

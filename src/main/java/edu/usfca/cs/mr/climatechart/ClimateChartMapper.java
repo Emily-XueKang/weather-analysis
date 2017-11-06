@@ -15,7 +15,7 @@ import org.joda.time.DateTime;
  * Created by xuekang on 11/1/17.
  */
 public class ClimateChartMapper extends Mapper<LongWritable, Text, IntWritable, ChartData> {
-    private final String givenGeoPrefix = "wqj";//Xi'an, Shaanxi, China
+    private final String givenGeoPrefix = "dp6t";//South Bend
     @Override
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
@@ -33,12 +33,14 @@ public class ClimateChartMapper extends Mapper<LongWritable, Text, IntWritable, 
         calendar.setTimeInMillis(Long.valueOf(timestamp));
         int month = calendar.get(Calendar.MONTH)+1;
         String geo = oneRecord.get(1);
-        float tempe = Float.valueOf(oneRecord.get(40));
-        float rain = Float.valueOf(oneRecord.get(55));
-        FloatWritable temperature = new FloatWritable(tempe);
-        FloatWritable precipitation = new FloatWritable(rain);
         if(geo.startsWith(givenGeoPrefix)){
-            context.write(new IntWritable(month), new ChartData(temperature,precipitation));
+            float tempe = Float.valueOf(oneRecord.get(40));
+            float rain = Float.valueOf(oneRecord.get(55));
+            FloatWritable temperature = new FloatWritable(tempe);
+            FloatWritable precipitation = new FloatWritable(rain);
+            ChartData cd = new ChartData();
+            cd.set(temperature,precipitation);
+            context.write(new IntWritable(month), cd);
         }
     }
 }

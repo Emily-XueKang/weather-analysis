@@ -188,8 +188,9 @@ public class ClimateChartReducer extends Reducer<IntWritable, ChartData, IntWrit
     @Override
     protected void cleanup(Context context) throws IOException,InterruptedException{
         //float averageTemperature = 0;
-        Writable[] outputs = new Writable[4];
+
         for(int i=1;i<=12;i++){
+            Writable[] outputs = new Writable[5];
             if(htmap.containsKey(i)){
                 outputs[0] = new FloatWritable(htmap.get(i));//high-temp
             }
@@ -202,7 +203,10 @@ public class ClimateChartReducer extends Reducer<IntWritable, ChartData, IntWrit
             if(pmap.containsKey(i)){
                 outputs[3] = new FloatWritable(pmap.get(i));//total-rain
             }
-            String results = outputs[0]+"\t"+outputs[1]+"\t"+outputs[2]+"\t"+outputs[3];
+            if(cmap.containsKey(i)){
+                outputs[4] = new IntWritable(cmap.get(i));
+            }
+            String results = outputs[0]+"\t"+outputs[1]+"\t"+outputs[2]+"\t"+outputs[3]+"\t"+outputs[4];
             context.write(new IntWritable(i),new Text(results));
         }
     }

@@ -13,7 +13,15 @@ public class ChartData implements WritableComparable {
     private FloatWritable temperature;
     private FloatWritable precipitation;
 
+    public ChartData(){
+        this.temperature = new FloatWritable();
+        this.precipitation = new FloatWritable();
+    }
     public ChartData(FloatWritable temperature, FloatWritable precipitation){
+        this.temperature = temperature;
+        this.precipitation = precipitation;
+    }
+    public void set(FloatWritable temperature, FloatWritable precipitation) {
         this.temperature = temperature;
         this.precipitation = precipitation;
     }
