@@ -18,9 +18,9 @@ public class SolarWind implements WritableComparable<SolarWind>{
         this.geohash = new Text();
     }
 
-    public SolarWind(Text windGust, Text cloudCover, Text geohash){
-        this.wind_gust = windGust;
-        this.cloud_coverage = cloudCover;
+    public SolarWind(Text wind, Text cloud, Text geohash){
+        this.wind_gust = wind;
+        this.cloud_coverage = cloud;
         this.geohash = geohash;
     }
 
@@ -30,11 +30,11 @@ public class SolarWind implements WritableComparable<SolarWind>{
         this.geohash = geo;
     }
 
-    public Text getCloudCover() {
+    public Text getCloudcover() {
         return cloud_coverage;
     }
 
-    public Text getWindGust() {
+    public Text getWindgust() {
         return  wind_gust;
     }
 
