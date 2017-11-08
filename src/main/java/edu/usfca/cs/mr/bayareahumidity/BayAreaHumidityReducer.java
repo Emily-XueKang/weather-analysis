@@ -1,6 +1,4 @@
 package edu.usfca.cs.mr.bayareahumidity;
-
-
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -14,10 +12,14 @@ public class BayAreaHumidityReducer extends Reducer<Text, FloatWritable, Text, F
     protected void reduce(Text key, Iterable<FloatWritable> values, Context context)
             throws IOException, InterruptedException {
         float total = 0;
+        float average = 0;
+        int count = 0;
         for (FloatWritable val : values) {
             total += val.get();
+            count+=1;
         }
-        context.write(new Text(key),new FloatWritable(total));
+        average = total/count;
+        context.write(new Text(key),new FloatWritable(average));
     }
 }
 
