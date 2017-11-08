@@ -8,22 +8,21 @@ import java.util.StringTokenizer;
 /**
  * Created by xuekang on 11/5/17.
  */
-public class WellingtonReducer extends Reducer<Text, Text, Text, Text>{
+public class AmarilloReducer extends Reducer<Text, Text, Text, Text>{
     @Override
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        double minWind = Integer.MAX_VALUE;
+        float minWind = Integer.MAX_VALUE;
         String bestTime = "";
         for(Text val : values) {
             String[] features = val.toString().split("\t");
-            String yearmonth = features[0];
-            String vOfWind = features[1];
-            String uOfWind = features[2];
-            double wind = Math.sqrt(Math.pow(Double.valueOf(uOfWind), 2) + Math.pow(Double.valueOf(vOfWind), 2));
-            if (wind <= minWind) {
-                minWind = wind;
-                bestTime = yearmonth;
+            String day = features[0];
+            String wind = features[1];
+            float windSpeed = Float.valueOf(wind);
+            if (windSpeed <= minWind) {
+                minWind = windSpeed;
+                bestTime = day;
             }
         }
-        context.write(key, new Text(String.valueOf(bestTime)));
+        context.write(new Text(bestTime), new Text(String.valueOf(minWind)));
     }
 }

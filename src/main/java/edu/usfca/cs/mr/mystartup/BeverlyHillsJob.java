@@ -10,21 +10,21 @@ import java.io.IOException;
 /**
  * Created by xuekang on 11/4/17.
  */
-public class CapeTownJob {
+public class BeverlyHillsJob {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
-            Job job = Job.getInstance(conf, "Surfing time, yeah");
+            Job job = Job.getInstance(conf, "Beverly Hills");
             // Current class.
-            job.setJarByClass(CapeTownJob.class);
+            job.setJarByClass(BeverlyHillsJob.class);
             // Mapper
-            job.setMapperClass(CapeTownMapper.class);
+            job.setMapperClass(BeverlyHillsMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(CapeTownReducer.class);
+            job.setCombinerClass(BeverlyHillsReducer.class);
             // Reducer
-            job.setReducerClass(CapeTownReducer.class);
+            job.setReducerClass(BeverlyHillsReducer.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(Text.class);
