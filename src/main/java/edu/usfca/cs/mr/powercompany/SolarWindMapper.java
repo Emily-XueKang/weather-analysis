@@ -16,16 +16,16 @@ public class SolarWindMapper extends Mapper<LongWritable, Text, Text, SolarWind>
         String line = value.toString();
         StringTokenizer itr = new StringTokenizer( line );
         int i=0;
+        String geohash = "";
         String wind_gust = "";
         String cloud_cover = "";
-        String geohash = "";
         String land = "";
         while (itr.hasMoreTokens()) {
             String feature = itr.nextToken();
             if (i == 1) geohash = feature;
             if (i == 15) wind_gust = feature;
             if (i == 16) cloud_cover = feature;
-            if(i==18) land = feature;
+            if (i==18) land = feature;
             i++;
         }
         if(land == "1"){

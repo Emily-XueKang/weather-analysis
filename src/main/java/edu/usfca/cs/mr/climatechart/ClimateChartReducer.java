@@ -18,9 +18,10 @@ public class ClimateChartReducer extends Reducer<IntWritable, ChartData, IntWrit
         float highTemperature = 0;
         float lowTemperature = Integer.MAX_VALUE;
         float totalTemperature = 0;
-        int tempCount = 0; //count of tempreture records for the month indicated by this key
+        int count = 0; //count of tempreture records for the month indicated by this key
         float totalRainfall = 0;
         float average_temp = 0;
+        float average_rain = 0;
         for(ChartData val : values) {
             float temperature = val.getTemperature().get();
             float rainfall = val.getPrecipitation().get();
@@ -32,12 +33,13 @@ public class ClimateChartReducer extends Reducer<IntWritable, ChartData, IntWrit
             }
             totalTemperature+=temperature;
             totalRainfall+=rainfall;
-            tempCount+=1;
+            count+=1;
         }
-        average_temp = totalTemperature/tempCount;
+        average_temp = totalTemperature/count;
+        average_rain = totalRainfall/count;
         int monthkey = key.get();
-        //<month-num>  <high-temp>  <low-temp>  <total-precip>  <avg-temp>
-        String results = highTemperature+"\t"+lowTemperature+"\t"+totalRainfall+"\t"+average_temp;
+        //<month-num>  <high-temp>  <low-temp>  <average-precip>  <avg-temp>
+        String results = highTemperature+"\t"+lowTemperature+"\t"+average_rain+"\t"+average_temp;
         context.write(new IntWritable(monthkey),new Text(results));
     }
 }
