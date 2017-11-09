@@ -3,6 +3,7 @@ package edu.usfca.cs.mr.bayareahumidity;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -30,12 +31,12 @@ public class BayAreaHumidityJob {
             // Reducer
             job.setReducerClass(BayAreaHumidityReducer.class);
             // Outputs from the Mapper.
-            job.setMapOutputKeyClass(Text.class);
+            job.setMapOutputKeyClass(IntWritable.class);
             job.setMapOutputValueClass(FloatWritable.class);
             // Outputs from Reducer. It is sufficient to set only the following
             // two properties if the Mapper and Reducer has same key and value
             // types. It is set separately for elaboration.
-            job.setOutputKeyClass(Text.class);
+            job.setOutputKeyClass(IntWritable.class);
             job.setOutputValueClass(FloatWritable.class);
             // path to input in HDFS
             FileInputFormat.addInputPath(job, new Path(args[0]));
