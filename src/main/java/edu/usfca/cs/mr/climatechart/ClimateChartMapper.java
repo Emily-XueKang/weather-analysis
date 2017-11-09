@@ -15,8 +15,7 @@ import org.joda.time.DateTime;
  * Created by xuekang on 11/1/17.
  */
 public class ClimateChartMapper extends Mapper<LongWritable, Text, IntWritable, ChartData> {
-    //private final String givenGeoPrefix = "dp6t";//South Bend
-    private final String givenGeoPrefix = "9q8y";//bayarea
+    private final String givenGeoPrefix = "dp6t";//South Bend
     @Override
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {

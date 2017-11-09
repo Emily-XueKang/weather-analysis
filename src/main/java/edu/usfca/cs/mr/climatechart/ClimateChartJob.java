@@ -24,7 +24,7 @@ public class ClimateChartJob {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
-            Job job = Job.getInstance(conf, "climate chart job");
+            Job job = Job.getInstance(conf, "south bend climate chart");
             // Current class.
             job.setJarByClass(ClimateChartJob.class);
             // Mapper
