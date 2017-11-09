@@ -24,7 +24,7 @@ public class BeverlyHillsReducer extends Reducer<Text, Text, Text, Text> {
             String cloud = "";
             String pricipitation = "";
             String value = val.toString();
-            String[] features = value.split( "\t" );
+            String[] features = value.split( ":" );
             cloud = features[0];
             pricipitation = features[1];
             if (Float.valueOf(cloud) <= 50 && Float.valueOf(pricipitation)<20) {

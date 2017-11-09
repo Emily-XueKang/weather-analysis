@@ -14,7 +14,7 @@ public class VailResortReducer extends Reducer<Text, Text, Text, Text> {
         String besttime = "";
         for(Text val : values){
             String value = val.toString();
-            String[] split = value.split("\t");
+            String[] split = value.split(":");
             day = split[0];
             visibility = split[1];
             if (maxVisibility < Float.valueOf(visibility)) {

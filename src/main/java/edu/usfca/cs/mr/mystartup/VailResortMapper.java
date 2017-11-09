@@ -44,7 +44,7 @@ public class VailResortMapper extends Mapper<LongWritable, Text, Text, Text> {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis( Long.valueOf( timestamp ) );
             String day = calendar.get( Calendar.YEAR ) + String.format( "%02d", calendar.get( Calendar.MONTH )+1) + calendar.get( Calendar.DATE ) ;
-            context.write(new Text("Vail Ski Resort"), new Text( day + "\t" + visibility));
+            context.write(new Text("Vail Ski Resort"), new Text( day + ":" + visibility));
         }
 
     }

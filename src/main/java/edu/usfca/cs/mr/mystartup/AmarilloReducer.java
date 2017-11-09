@@ -14,7 +14,7 @@ public class AmarilloReducer extends Reducer<Text, Text, Text, Text>{
         float minWind = Integer.MAX_VALUE;
         String bestTime = "";
         for(Text val : values) {
-            String[] features = val.toString().split("\t");
+            String[] features = val.toString().split(":");
             String day = features[0];
             String wind = features[1];
             float windSpeed = Float.valueOf(wind);

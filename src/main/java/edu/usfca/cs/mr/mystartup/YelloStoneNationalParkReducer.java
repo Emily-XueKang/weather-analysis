@@ -13,7 +13,7 @@ public class YelloStoneNationalParkReducer extends Reducer<Text, Text, Text, Tex
         String bestTime = "";
         for(Text val : values) {
             String value = val.toString();
-            String[] features = value.split( "\t" );
+            String[] features = value.split( ":" );
             String day = features[0];
             Float visibility = Float.valueOf(features[1]);
             if (bestVis <= Float.valueOf(visibility)) {
