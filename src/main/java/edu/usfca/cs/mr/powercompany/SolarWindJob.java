@@ -17,7 +17,7 @@ public class SolarWindJob {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
-            Job job = Job.getInstance(conf, "Snow Depths count job");
+            Job job = Job.getInstance(conf, "power company");
             // Current class.
             job.setJarByClass(SolarWindJob.class);
             // Mapper
