@@ -1,5 +1,6 @@
 package edu.usfca.cs.mr.bayareahumidity;
 import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
@@ -7,9 +8,9 @@ import java.io.IOException;
 /**
  * Created by xuekang on 11/2/17.
  */
-public class BayAreaHumidityReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
+public class BayAreaHumidityReducer extends Reducer<IntWritable, FloatWritable, IntWritable, FloatWritable> {
     @Override
-    protected void reduce(Text key, Iterable<FloatWritable> values, Context context)
+    protected void reduce(IntWritable key, Iterable<FloatWritable> values, Context context)
             throws IOException, InterruptedException {
         float total = 0;
         float average = 0;
@@ -19,7 +20,7 @@ public class BayAreaHumidityReducer extends Reducer<Text, FloatWritable, Text, F
             count+=1;
         }
         average = total/count;
-        context.write(new Text(key),new FloatWritable(average));
+        context.write(key,new FloatWritable(average));
     }
 }
 

@@ -1,17 +1,19 @@
 package edu.usfca.cs.mr.bayareahumidity;
 
 import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.StringTokenizer;
 /**
  * Created by xuekang on 11/2/17.
  */
-public class BayAreaHumidityMapper extends Mapper<LongWritable, Text, Text, FloatWritable> {
+public class BayAreaHumidityMapper extends Mapper<LongWritable, Text, IntWritable, FloatWritable> {
     //bay area geo prefix: 9qb/c/8/9
     //13:relative_humidity_zerodegc_isotherm
     @Override
@@ -24,9 +26,13 @@ public class BayAreaHumidityMapper extends Mapper<LongWritable, Text, Text, Floa
             oneRecord.add(itr.nextToken());
         }
         String geohash = oneRecord.get(1);
+        String timestamp = oneRecord.get(0);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(Long.valueOf(timestamp));
+        int month = calendar.get(Calendar.MONTH)+1;
         float precipitation = Float.valueOf(oneRecord.get(12));
         if(geohash.substring(0,3).equals("9qb")||geohash.substring(0,3).equals("9qc")||geohash.substring(0,3).equals("9q8")||geohash.substring(0,3).equals("9q9")){
-            context.write(new Text(geohash.substring(0,3)),new FloatWritable(precipitation));
+            context.write(new IntWritable(month),new FloatWritable(precipitation));
         }
     }
 }
