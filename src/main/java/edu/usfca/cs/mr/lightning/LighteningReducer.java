@@ -22,7 +22,7 @@ public class LighteningReducer extends Reducer<Text, FloatWritable, Text, FloatW
         for (FloatWritable val : values) {
             count += val.get();
         }
-        context.write(new Text(key),new FloatWritable(count));
+        context.write(key,new FloatWritable(count));
     }
 }
 
