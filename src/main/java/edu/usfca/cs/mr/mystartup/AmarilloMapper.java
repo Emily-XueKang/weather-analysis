@@ -24,14 +24,16 @@ public class AmarilloMapper extends Mapper<LongWritable, Text, Text, Text>{
         }
         String timestamp = oneRecord.get(0);
         String geohash = oneRecord.get(1);
-        String rainOrNot = oneRecord.get(29);
+        float rainOrNot = Float.valueOf(oneRecord.get(29));
         String windGust = oneRecord.get(15);
 
-        if ((rainOrNot.equals("0.0")) && (geohash.matches("(9wr8|9wrb|9wpx|9wpz).*"))) {
+        if ((rainOrNot==0) && (geohash.matches("(9wr8|9wrb|9wpx|9wpz).*"))) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(Long.valueOf(timestamp));
-            String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + calendar.get(Calendar.DATE ) ;
-            context.write(new Text("Amarillo Best Time"), new Text(day + ":" + windGust));
+            String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + calendar.get(Calendar.DATE );
+            Text intervalue = new Text(day + ":" + windGust);
+            context.write(new Text("Amarillo Best Time"), intervalue);
+            System.out.println(intervalue);
         }
     }
 }
