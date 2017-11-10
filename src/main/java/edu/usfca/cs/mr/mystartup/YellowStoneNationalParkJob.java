@@ -22,7 +22,7 @@ public class YellowStoneNationalParkJob {
             // Mapper
             job.setMapperClass(YelloStoneNationalParkMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(YelloStoneNationalParkReducer.class);
+            //job.setCombinerClass(YelloStoneNationalParkReducer.class);
             // Reducer
             job.setReducerClass(YelloStoneNationalParkReducer.class);
             // Outputs from the Mapper.

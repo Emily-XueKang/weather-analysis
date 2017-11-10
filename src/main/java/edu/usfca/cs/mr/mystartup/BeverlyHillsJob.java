@@ -22,7 +22,7 @@ public class BeverlyHillsJob {
             // Mapper
             job.setMapperClass(BeverlyHillsMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(BeverlyHillsReducer.class);
+            //job.setCombinerClass(BeverlyHillsReducer.class);
             // Reducer
             job.setReducerClass(BeverlyHillsReducer.class);
             // Outputs from the Mapper.

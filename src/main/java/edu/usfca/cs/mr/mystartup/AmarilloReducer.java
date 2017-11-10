@@ -28,7 +28,7 @@ public class AmarilloReducer extends Reducer<Text, Text, Text, Text>{
                 minWind = windSpeed;
                 bestTime = day;
             }
-            context.write(new Text(bestTime), new Text(String.valueOf(minWind)));
         }
+        context.write(new Text(bestTime), new Text(String.valueOf(minWind)));
     }
 }

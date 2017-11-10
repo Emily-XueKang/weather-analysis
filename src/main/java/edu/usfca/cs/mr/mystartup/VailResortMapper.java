@@ -20,10 +20,8 @@ public class VailResortMapper extends Mapper<LongWritable, Text, Text, Text> {
         int i=0;
         String timestamp = "";
         String geohash = "";
-        String temperature = "";
         String visibility = "";
         float snowcover = 0;
-
         while (itr.hasMoreTokens()) {
             String featrue = itr.nextToken();
             if (i == 0) {

@@ -33,7 +33,7 @@ public class AmarilloMapper extends Mapper<LongWritable, Text, Text, Text>{
             String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + calendar.get(Calendar.DATE );
             Text intervalue = new Text(day + ":" + windGust);
             context.write(new Text("Amarillo Best Time"), intervalue);
-            System.out.println(intervalue);
+            System.out.println("intermediate value==="+intervalue);
         }
     }
 }

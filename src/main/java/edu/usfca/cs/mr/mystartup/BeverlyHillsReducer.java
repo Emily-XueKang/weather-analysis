@@ -20,9 +20,9 @@ public class BeverlyHillsReducer extends Reducer<Text, Text, Text, Text> {
         boolean lesscloud = false;
         boolean lesspricipitation = false;
         String bestDate = "";
+        String cloud = "";
+        String pricipitation = "";
         for(Text val : values) {
-            String cloud = "";
-            String pricipitation = "";
             String value = val.toString();
             String[] features = value.split( ":" );
             cloud = features[0];
@@ -36,6 +36,6 @@ public class BeverlyHillsReducer extends Reducer<Text, Text, Text, Text> {
             }
         }
         if(lesscloud==true && lesspricipitation==true)
-        context.write(key, new Text(bestDate));
+        context.write(key, new Text(cloud+"--"+pricipitation));
     }
 }

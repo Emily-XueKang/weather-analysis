@@ -24,7 +24,7 @@ public class VailResortJob {
             // Mapper
             job.setMapperClass(VailResortMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(VailResortReducer.class);
+            //job.setCombinerClass(VailResortReducer.class);
             // Reducer
             job.setReducerClass(VailResortReducer.class);
             // Outputs from the Mapper.

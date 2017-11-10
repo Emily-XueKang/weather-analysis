@@ -22,7 +22,7 @@ public class AmarilloJob {
             // Mapper
             job.setMapperClass(AmarilloMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(AmarilloReducer.class);
+            //job.setCombinerClass(AmarilloReducer.class);
             // Reducer
             job.setReducerClass(AmarilloReducer.class);
             // Outputs from the Mapper.

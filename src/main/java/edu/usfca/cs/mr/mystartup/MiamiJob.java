@@ -23,7 +23,7 @@ public class MiamiJob  {
             // Mapper
             job.setMapperClass(MiamiMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(MiamiReducer.class);
+            //job.setCombinerClass(MiamiReducer.class);
             // Reducer
             job.setReducerClass(MiamiReducer.class);
             // Outputs from the Mapper.

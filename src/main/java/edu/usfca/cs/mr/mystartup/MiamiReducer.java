@@ -15,7 +15,7 @@ public class MiamiReducer extends Reducer<Text, Text, Text, Text>{
         for(Text val : values){
             precipitation = val.toString();
             prec = Float.valueOf(precipitation);
-            if(prec<25){
+            if(prec<50){
                 lessthan25=true;
             }
             else{

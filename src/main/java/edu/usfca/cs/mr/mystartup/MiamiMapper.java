@@ -25,10 +25,18 @@ public class MiamiMapper extends Mapper<LongWritable, Text, Text, Text> {
         String lighting_surface = "";
         while (itr.hasMoreTokens()) {
             String item = itr.nextToken();
-            if (i == 0) timestamp = item;
-            if (i == 1) geohash = item;
-            if (i == 23) lighting_surface = item;
-            if (i == 55) precipitatoin = item;
+            if (i == 0) {
+                timestamp = item;
+            }
+            if (i == 1) {
+                geohash = item;
+            }
+            if (i == 23) {
+                lighting_surface = item;
+            }
+            if (i == 55) {
+                precipitatoin = item;
+            }
             i++;
         }
         Float light = Float.valueOf(lighting_surface);

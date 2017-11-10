@@ -9,18 +9,20 @@ import java.util.StringTokenizer;
 public class YelloStoneNationalParkReducer extends Reducer<Text, Text, Text, Text>{
     @Override
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        float bestVis = 0;
-        String bestTime = "";
+        float visThreshHold = 22000;
+        boolean goodVis = false;
+        float visibility = 0;
         for(Text val : values) {
-            String value = val.toString();
-            String[] features = value.split( ":" );
-            String day = features[0];
-            Float visibility = Float.valueOf(features[1]);
-            if (bestVis <= Float.valueOf(visibility)) {
-                bestVis = Float.valueOf(visibility);
-                bestTime = day;
+            visibility = Float.valueOf(val.toString());
+            if(visibility>visThreshHold){
+                goodVis = true;
+            }
+            else{
+                goodVis = false;
             }
         }
-        context.write(new Text(bestTime), new Text(String.valueOf(bestVis)));
+        if(goodVis==true){
+            context.write(key, new Text(String.valueOf(visibility)));
+        }
     }
 }
