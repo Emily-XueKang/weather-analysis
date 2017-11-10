@@ -28,8 +28,8 @@ public class SolarWindMapper extends Mapper<LongWritable, Text, Text, SolarWind>
             if (i==18) land = feature;
             i++;
         }
-        if(land == "1"){
-            context.write(new Text(geohash.substring(0,5)), new SolarWind(new Text(wind_gust), new Text(cloud_cover), new Text(geohash)));
+        if(Float.valueOf(land) == 1){
+            context.write(new Text(geohash.substring(0,5)), new SolarWind(new Text(wind_gust), new Text(cloud_cover)));
         }
     }
 }

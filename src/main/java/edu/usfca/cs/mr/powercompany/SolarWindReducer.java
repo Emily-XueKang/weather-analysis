@@ -15,18 +15,17 @@ public class SolarWindReducer extends Reducer<Text, SolarWind, Text, SolarWind>{
         int count = 0;
         double averageWindspeed = 0.0;
         double averageCould = 0.0;
-        Text geohash = null;
         for(SolarWind val : values){
-            geohash = new Text(val.getGeohash());
             Text cloud = val.getCloudcover();
             Text windSpeed = val.getWindgust();
             totalWindspeed +=  Double.valueOf(windSpeed.toString());
             totalCloud += Double.valueOf(cloud.toString());
+            count++;
         }
         averageCould = totalCloud/count;
         averageWindspeed = totalWindspeed/count;
         if (averageWindspeed>10 && averageCould<30) {
-            context.write(key, new SolarWind(new Text(String.valueOf(averageWindspeed)), new Text(String.valueOf(averageCould)), geohash));
+            context.write(key, new SolarWind(new Text(String.valueOf(averageWindspeed)), new Text(String.valueOf(averageCould))));
         }
     }
 }
