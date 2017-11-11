@@ -10,19 +10,19 @@ public class MiamiReducer extends Reducer<Text, Text, Text, Text>{
     @Override
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         String precipitation = "";
-        boolean lessthan25 = false;
+        boolean lessthan30 = false;
         Float prec;
         for(Text val : values){
             precipitation = val.toString();
             prec = Float.valueOf(precipitation);
-            if(prec<50){
-                lessthan25=true;
+            if(prec<30){
+                lessthan30=true;
             }
             else{
-                lessthan25=false;
+                lessthan30=false;
             }
         }
-        if(lessthan25){
+        if(lessthan30){
             context.write(new Text(key),new Text(precipitation));
         }
     }

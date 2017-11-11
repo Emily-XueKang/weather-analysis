@@ -54,7 +54,7 @@ public class YelloStoneNationalParkMapper extends Mapper<LongWritable, Text, Tex
         if ((geohash.matches("(9xc).*")) && rain==0 && freezingRain==0 && snow==0 ) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(Long.valueOf(timestamp));
-            String day = calendar.get( Calendar.YEAR ) + String.format( "%02d", calendar.get( Calendar.MONTH )+1) + calendar.get( Calendar.DATE );
+            String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + String.format("%02d",calendar.get(Calendar.DATE ));
             context.write(new Text(day), new Text(visibility));
         }
     }

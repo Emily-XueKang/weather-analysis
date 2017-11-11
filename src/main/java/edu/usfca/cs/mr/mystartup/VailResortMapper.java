@@ -41,7 +41,7 @@ public class VailResortMapper extends Mapper<LongWritable, Text, Text, Text> {
         if (geohash.matches("(9xh3).*") && (snowcover==100)) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis( Long.valueOf( timestamp ) );
-            String day = calendar.get( Calendar.YEAR ) + String.format( "%02d", calendar.get( Calendar.MONTH )+1) + calendar.get( Calendar.DATE ) ;
+            String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + String.format("%02d",calendar.get(Calendar.DATE ));
             context.write(new Text("Vail Ski Resort"), new Text( day + ":" + visibility));
         }
 

@@ -36,6 +36,6 @@ public class BeverlyHillsReducer extends Reducer<Text, Text, Text, Text> {
             }
         }
         if(lesscloud==true && lesspricipitation==true)
-        context.write(key, new Text(cloud+"--"+pricipitation));
+        context.write(key, new Text("cloud:"+cloud+"\t"+"pricipitation:"+pricipitation));
     }
 }

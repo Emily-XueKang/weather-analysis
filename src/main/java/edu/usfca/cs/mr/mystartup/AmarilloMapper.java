@@ -30,10 +30,9 @@ public class AmarilloMapper extends Mapper<LongWritable, Text, Text, Text>{
         if ((rainOrNot==0) && (geohash.matches("(9wr8|9wrb|9wpx|9wpz).*"))) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(Long.valueOf(timestamp));
-            String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + calendar.get(Calendar.DATE );
+            String day = calendar.get(Calendar.YEAR) + String.format("%02d", calendar.get(Calendar.MONTH)+1) + String.format("%02d",calendar.get(Calendar.DATE ));
             Text intervalue = new Text(day + ":" + windGust);
             context.write(new Text("Amarillo Best Time"), intervalue);
-            System.out.println("intermediate value==="+intervalue);
         }
     }
 }
