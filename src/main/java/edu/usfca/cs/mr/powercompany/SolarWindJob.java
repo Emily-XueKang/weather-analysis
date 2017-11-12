@@ -23,7 +23,7 @@ public class SolarWindJob {
             // Mapper
             job.setMapperClass(SolarWindMapper.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(SolarWindReducer.class);
+            //job.setCombinerClass(SolarWindReducer.class);
             // Reducer
             job.setReducerClass(SolarWindReducer.class);
             // Outputs from the Mapper.
