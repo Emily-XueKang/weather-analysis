@@ -17,10 +17,6 @@ public class AmarilloReducer extends Reducer<Text, Text, Text, Text>{
         float windSpeed = 0;
         for(Text val : values) {
             String[] features = val.toString().split(":");
-            System.out.println("featureslength=======" + features.length);
-            for(int i=0;i<features.length;i++){
-                System.out.println("f["+i+"]====="+features[i]);
-            }
             day = features[0];
             wind = features[1];
             windSpeed = Float.valueOf(wind);
