@@ -80,6 +80,30 @@ Geohash--times
 
 **(2) What is the driest month in the bay area? This should include a histogram with data from each month.**
 
+Jan:	    32.104645
+
+Feb:	    28.9719
+
+Mar:	    24.100344
+
+Apr:	    34.981876
+
+May:	    32.672264
+
+June:	    25.806923
+
+Jul:	    36.241917
+
+Aug:	    23.547655
+
+Sep:	    31.077251
+
+Oct:	    32.990948
+
+Nov:	    39.13976
+
+Dec:	    49.94359
+
 ![Bay Area Humidity](./bayarea.jpg)
 
 
