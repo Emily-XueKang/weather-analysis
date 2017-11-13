@@ -6,6 +6,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Created by xuekang on 11/7/17.
@@ -27,7 +28,7 @@ public class SolarWindReducer extends Reducer<Text, SolarWind, Text, SolarWind>{
             totalCloud = totalCloud.add(new BigDecimal(cloud.get()));
             count++;
         }
-        averageCould = totalCloud.divide(new BigDecimal(count)).doubleValue();
+        averageCould = totalCloud.divide(new BigDecimal(count),2, RoundingMode.HALF_UP).doubleValue();
         averageWindspeed = totalWind.divide(new BigDecimal(count)).doubleValue();
         if (averageWindspeed>10 || averageCould<50) {
             context.write(key, new SolarWind(new DoubleWritable(averageWindspeed), new DoubleWritable(averageCould)));
