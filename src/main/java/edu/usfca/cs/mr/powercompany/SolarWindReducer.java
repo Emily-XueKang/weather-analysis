@@ -28,7 +28,7 @@ public class SolarWindReducer extends Reducer<Text, SolarWind, Text, SolarWind>{
         }
         averageCould = totalCloud.divide(new BigDecimal(count),2, RoundingMode.HALF_UP).doubleValue();
         averageWindspeed = totalWind.divide(new BigDecimal(count),2, RoundingMode.HALF_UP).doubleValue();
-        if (averageWindspeed>10 || averageCould<50) {
+        if (averageWindspeed>10 || averageCould<30) {
             context.write(key, new SolarWind(new DoubleWritable(averageWindspeed), new DoubleWritable(averageCould)));
         }
     }

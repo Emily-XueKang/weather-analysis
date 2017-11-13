@@ -80,6 +80,9 @@ Geohash--times
 
 **(2) What is the driest month in the bay area? This should include a histogram with data from each month.**
 
+![Bay Area Humidity](./bayarea.jpg)
+
+
 **(3) Travel Agency -- Best time of 5 places**
 
 **Amarillo** best day is 2015/10/18, since the wind speed is the minimum of the year which is 0.13040408, and it is not raining.
@@ -141,6 +144,7 @@ Criteria are "no rain", "no freezing rain", "no snow" and great visibility which
 
 
 **Wind:**
+
 
 **Combination:**
 
