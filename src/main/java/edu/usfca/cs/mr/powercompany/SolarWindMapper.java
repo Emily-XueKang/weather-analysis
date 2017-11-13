@@ -1,4 +1,6 @@
 package edu.usfca.cs.mr.powercompany;
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -17,19 +19,22 @@ public class SolarWindMapper extends Mapper<LongWritable, Text, Text, SolarWind>
         StringTokenizer itr = new StringTokenizer( line );
         int i=0;
         String geohash = "";
-        String wind_gust = "";
-        String cloud_cover = "";
+//        String wind_gust = "";
+//        String cloud_cover = "";
+        double wind_gust = 0;
+        double cloud_cover = 0;
         String land = "";
         while (itr.hasMoreTokens()) {
             String feature = itr.nextToken();
             if (i == 1) geohash = feature;
-            if (i == 15) wind_gust = feature;
-            if (i == 16) cloud_cover = feature;
+            if (i == 15) wind_gust = Float.valueOf(feature);
+            if (i == 16) cloud_cover = Float.valueOf(feature);
             if (i == 18) land = feature;
             i++;
         }
+
         if(Float.valueOf(land) == 1){
-            context.write(new Text(geohash.substring(0,5)), new SolarWind(new Text(wind_gust), new Text(cloud_cover)));
+            context.write(new Text(geohash.substring(0,5)), new SolarWind(new DoubleWritable(wind_gust), new DoubleWritable(cloud_cover)));
         }
     }
 }

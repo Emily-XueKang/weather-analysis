@@ -1,4 +1,6 @@
 package edu.usfca.cs.mr.powercompany;
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
 import java.io.DataInput;
@@ -8,29 +10,29 @@ import java.io.IOException;
  * Created by xuekang on 11/7/17.
  */
 public class SolarWind implements WritableComparable<SolarWind>{
-    private Text wind_gust = null;
-    private Text cloud_coverage = null;
+    private DoubleWritable wind_gust = null;
+    private DoubleWritable cloud_coverage = null;
 
     public SolarWind()   {
-        this.wind_gust = new Text();
-        this.cloud_coverage = new Text();
+        this.wind_gust = new DoubleWritable();
+        this.cloud_coverage = new DoubleWritable();
     }
 
-    public SolarWind(Text wind, Text cloud){
+    public SolarWind(DoubleWritable wind, DoubleWritable cloud){
         this.wind_gust = wind;
         this.cloud_coverage = cloud;
     }
 
-    public void set(Text wind, Text cloud){
+    public void set(DoubleWritable wind, DoubleWritable cloud){
         this.wind_gust = wind;
         this.cloud_coverage = cloud;
     }
 
-    public Text getCloudcover() {
+    public DoubleWritable getCloudcover() {
         return cloud_coverage;
     }
 
-    public Text getWindgust() {
+    public DoubleWritable getWindgust() {
         return  wind_gust;
     }
 
