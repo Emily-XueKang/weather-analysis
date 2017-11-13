@@ -5,6 +5,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * Created by xuekang on 11/7/17.
@@ -12,20 +13,22 @@ import java.io.IOException;
 public class SolarWindReducer extends Reducer<Text, SolarWind, Text, SolarWind>{
     @Override
     protected void reduce(Text key, Iterable<SolarWind> values, Context context) throws IOException, InterruptedException {
-        double totalWind = 0.0;
-        double totalCloud = 0.0;
+        //double totalWind = 0.0;
+        BigDecimal totalWind = new BigDecimal(0);
+        BigDecimal totalCloud = new BigDecimal(0);
         int count = 0;
         double averageWindspeed = 0.0;
         double averageCould = 0.0;
         for(SolarWind val : values){
             DoubleWritable cloud = val.getCloudcover();
             DoubleWritable wind = val.getWindgust();
-            totalWind +=  wind.get();
-            totalCloud += cloud.get();
+            //totalWind +=  wind.get();
+            totalWind.add(new BigDecimal(wind.get()));
+            totalCloud.add(new BigDecimal(cloud.get()));
             count++;
         }
-        averageCould = totalCloud/count;
-        averageWindspeed = totalWind/count;
+        averageCould = totalCloud.divide(new BigDecimal(count)).doubleValue();
+        averageWindspeed = totalWind.divide(new BigDecimal(count)).doubleValue();
         if (averageWindspeed>10 && averageCould<30 && averageCould>=0.0) {
             context.write(key, new SolarWind(new DoubleWritable(averageWindspeed), new DoubleWritable(averageCould)));
         }
