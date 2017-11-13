@@ -25,7 +25,7 @@ public class SolarWindMapper extends Mapper<LongWritable, Text, Text, SolarWind>
             if (i == 1) geohash = feature;
             if (i == 15) wind_gust = feature;
             if (i == 16) cloud_cover = feature;
-            if (i==18) land = feature;
+            if (i == 18) land = feature;
             i++;
         }
         if(Float.valueOf(land) == 1){
