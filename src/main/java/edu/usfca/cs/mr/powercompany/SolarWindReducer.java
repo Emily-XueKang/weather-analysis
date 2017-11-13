@@ -24,7 +24,7 @@ public class SolarWindReducer extends Reducer<Text, SolarWind, Text, SolarWind>{
         }
         averageCould = totalCloud/count;
         averageWindspeed = totalWindspeed/count;
-        if (averageWindspeed>10 && averageCould<30 && totalCloud>=0.0) {
+        if (averageWindspeed>10 && averageCould<30 && averageCould>=0.0) {
             context.write(key, new SolarWind(new Text(String.valueOf(averageWindspeed)), new Text(String.valueOf(averageCould))));
         }
     }

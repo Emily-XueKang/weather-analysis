@@ -66,7 +66,7 @@ public class SolarWind implements WritableComparable<SolarWind>{
     public boolean equals(Object o) {
         if (o instanceof SolarWind) {
             SolarWind other = (SolarWind) o;
-            return cloud_coverage.equals(other.cloud_coverage) && cloud_coverage.equals(other.wind_gust);
+            return cloud_coverage.equals(other.cloud_coverage) && wind_gust.equals(other.wind_gust);
         }
         return false;
     }
