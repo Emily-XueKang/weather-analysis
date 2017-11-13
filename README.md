@@ -26,6 +26,7 @@ Responses go here.
 Geohash:            Average snow depths
 
 f2w7rv7q5hup :	7.64520774
+
 ![geomap for f2w7rv7q5hup](./maps/snowgeo1.jpg)
 
 c41uhb4r5n00 :	2.18433252
@@ -33,9 +34,11 @@ c41uhb4r5n00 :	2.18433252
 c41ueb1jyypb :	2.184330561
 
 c41uxkww12rz :	2.026163066
+
 ![geomap for c41u](./maps/snowgeo2.jpg)
 
 c44hg15vqhxb :	2.024345323
+
 ![geomap for c41u](./maps/snowgeo3.jpg)
 
 
@@ -52,6 +55,7 @@ To Human Readable:
 Time: Saturday, August 22, 2015 6:00:00 PM GMT
 
 Geohash map:
+
 ![geomap for d5dpds10m55b](./maps/hightempgeomap.jpg)
 
 Temperature: 58.24062 Celsius
@@ -63,12 +67,15 @@ Temperature: 58.24062 Celsius
 Geohash--times
 
 9g0g--2280
+
 ![gtomap for 9g0g](./maps/geolight1.jpg)
 
 9g3m--2271
+
 ![gtomap for 9g3m](./maps/geolight2.jpg)
 
 9err--2237
+
 ![gtomap for 9err](./maps/geolight3.jpg)
 
 **(2) What is the driest month in the bay area? This should include a histogram with data from each month.**
@@ -129,6 +136,14 @@ Criteria are "no rain", "no freezing rain", "no snow" and great visibility which
 20150206	visibility:24227.873
 
 **(4) Solar wind farm top 9 places:**
+
+**Solar:**
+
+
+**Wind:**
+
+**Combination:**
+
 
 
 
