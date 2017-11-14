@@ -114,58 +114,59 @@ Dec:	    49.94359
 **Beverly Hills** best time :
 Based on least precipitation:
 
-2015/06/18	cloud:0.0	pricipitation:10.165001
+    2015/06/18	cloud:0.0	pricipitation:10.165001
 
-2015/02/14	cloud:0.0	pricipitation:10.378329
+    2015/02/14	cloud:0.0	pricipitation:10.378329
 
-2015/03/27	cloud:0.0	pricipitation:10.504482
+    2015/03/27	cloud:0.0	pricipitation:10.504482
 
-2015/10/30	cloud:0.0	pricipitation:10.510426
+    2015/10/30	cloud:0.0	pricipitation:10.510426
 
 Based on appropriate cloud to avoid overly shining:
 
-2015/11/21	cloud:10.0	pricipitation:11.260824
+    2015/11/21	cloud:10.0	pricipitation:11.260824
 
-2015/05/21	cloud:10.0	pricipitation:18.190544
+    2015/05/21	cloud:10.0	pricipitation:18.190544
 
-2015/06/20	cloud:12.0	pricipitation:10.538406
+    2015/06/20	cloud:12.0	pricipitation:10.538406
 
-2015/05/01	cloud:12.0	pricipitation:11.919537
+    2015/05/01	cloud:12.0	pricipitation:11.919537
 
-2015/07/27	cloud:12.0	pricipitation:18.992275
+    2015/07/27	cloud:12.0	pricipitation:18.992275
 
 **Miami** best time:
 
 No lightning and less precipitation:
 
-2015/02/18	precipitation:4.796525
+    2015/02/18	precipitation:4.796525
 
-2015/02/19	precipitation:6.3019037
+    2015/02/19	precipitation:6.3019037
 
-2015/01/28	precipitation:6.6647477
+    2015/01/28	precipitation:6.6647477
 
-2015/02/14	precipitation:6.7701597
+    2015/02/14	precipitation:6.7701597
 
 **Vail Ski Resort** best day is 2015/03/24 since the visibility value is maximum of the year wighi is 24307.436, and the snow coverage is 100%.
 **Yellow Stone National Park** best times:
 
 Criteria are "no rain", "no freezing rain", "no snow" and great visibilities which is above the threshold of 22000.
 
-2015/10/04	visibility:24235.344
+    2015/10/04	visibility:24235.344
 
-2015/03/06	visibility:24229.076
+    2015/03/06	visibility:24229.076
 
-2015/02/01	visibility:24228.746
+    2015/02/01	visibility:24228.746
 
-2015/02/16	visibility:24228.299
+    2015/02/16	visibility:24228.299
 
-2015/02/06	visibility:24227.873
+    2015/02/06	visibility:24227.873
 
 **(4) Solar wind farm top 9 places:**
 
 _Based on part of the Sample dataset._
 
 **Solar:**
+
 No.1
 
     9xmq1
@@ -228,7 +229,9 @@ No.3
 
 **(5)Given a Geohash prefix, create a climate chart for the region. This includes high, low, and average temperatures, as well as monthly average rainfall (precipitation).**
 
-Given Geohash: dp6t //South Bend, Indiana
+Given Geohash: dp6t, 
+
+Location: South Bend, Indiana
 
 ![Climate Chart](./southbendcc.jpg)
 
