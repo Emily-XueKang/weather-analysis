@@ -146,11 +146,10 @@ No lightning and less precipitation:
 
 20150214	precipitation:6.7701597
 
-**Vail Ski Resort** best day is 2015/03/24 since the visibility value is maximum of the year wighi is 24307.436, and the snow coverage it 100%.
-
+**Vail Ski Resort** best day is 2015/03/24 since the visibility value is maximum of the year wighi is 24307.436, and the snow coverage is 100%.
 **Yellow Stone National Park** best times:
 
-Criteria are "no rain", "no freezing rain", "no snow" and great visibility which are above the threshold of 22000.
+Criteria are "no rain", "no freezing rain", "no snow" and great visibilities which is above the threshold of 22000.
 
 20151004	visibility:24235.344
 
