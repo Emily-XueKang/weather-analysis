@@ -60,7 +60,7 @@ Geohash map:
 
 Temperature: 58.24062 Celsius
 
-This temperature is not anomaly.
+The place with geohash of d5dpds10m55b is located near Parque Agua Escondida Cancun and Leona Vicario in Mexico, I checked the average and hottest temperature these two places, the average temperature in August is aroung 20 Celsius, and the hottest temperature in August is around 34 Celsius. So the hottest temperature of 58 Celsius is a little anomaly. 
 
 #### ANALYSIS:
 
