@@ -60,6 +60,8 @@ Geohash map:
 
 Temperature: 58.24062 Celsius
 
+This temperature is not anomaly.
+
 #### ANALYSIS:
 
 **(1) Where are you most likely to be struck by lightning? Use a precision of 4 Geohash characters and provide the top 3 locations.**
